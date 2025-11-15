@@ -8,14 +8,15 @@ export default function Marketplace() {
   const [loading, setLoading] = useState(false);
 
   async function loadNFTs() {
+    setLoading(true);
     try {
-      setLoading(true);
-
       const res = await fetch("/api/alchemy");
       const data = await res.json();
 
-      // For Alchemy v3 responses
-      setNfts(data?.nfts || data?.nftTokenInfos || data?.tokens || []);
+      console.log("API Response:", data);
+
+      // Alchemy v3 ALWAYS returns "nfts"
+      setNfts(data.nfts || []);
     } catch (e) {
       console.error("Failed to load NFTs:", e);
     } finally {

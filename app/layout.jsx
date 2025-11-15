@@ -1,14 +1,14 @@
+import "./globals.css";
+
 export const metadata = {
-  title: "BooAI Marketplace",
-  description: "Base + Farcaster NFT Marketplace"
+  title: 'BooAI — Base Marketplace',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head />
-      <body style={{ background: "#000", color: "#fff", margin: 0, fontFamily: "system-ui, Arial" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: 16 }}>
+      <body className="bg-black text-white min-h-screen">
+        <div className="max-w-6xl mx-auto px-4">
           {children}
         </div>
       </body>

@@ -1,16 +1,24 @@
-## Hi there 👋
+# BooAI Base Marketplace
 
-<!--
-**booai-miniapp/booai-miniapp** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Minimal Next.js (App Router) mini-app for Base + Farcaster.
 
-Here are some ideas to get you started:
+Files included:
+- marketplace UI (components)
+- connect wallet
+- OpenSea proxy at /api/opensea
+- Drop API at /api/drops (demo in-memory)
+- mint and drop pages (demo UI)
+- Farcaster manifest served from public/.well-known/farcaster.json
+- public/manifest.json for app icon/splash metadata
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+IMPORTANT:
+1. Add your OpenSea API key to Vercel environment variables:
+   Name: OPEN_SEA_API_KEY
+   Value: (your api key)
+
+2. Deploy on Vercel (Import repo). If Vercel caches old builds, use "Redeploy with Clear Build Cache".
+
+3. Visit: https://your-vercel-url/ to test.
+4. Open: https://your-vercel-url/api/opensea?limit=6 to check proxy results.
+
+This repo is JS-only to avoid TypeScript build issues on phone.

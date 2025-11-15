@@ -1,1 +1,19 @@
-
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "baseBuilder": {
+    "ownerAddress": "0x33eC776A05C832d51894cF3E70b29162717eAdE4"
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "BooAI Mini App",
+    "homeUrl": "https://YOUR_VERCEL_URL/",
+    "iconUrl": "https://YOUR_VERCEL_URL/icon.png",
+    "splashImageUrl": "https://YOUR_VERCEL_URL/splash.png",
+    "subtitle": "Mint, list & discover Base NFTs",
+    "description": "A Farcaster-native mini-app NFT marketplace on Base."
+  }
+}

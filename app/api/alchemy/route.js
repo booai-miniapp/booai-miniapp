@@ -11,7 +11,10 @@ export async function GET() {
       );
     }
 
-    const url = `https://base-mainnet.g.alchemy.com/nft/v3/${apiKey}/getNFTsForCollection?withMetadata=true&pageSize=24&contractAddress=0x2805e9dbce2839c5feae858723f9499f15fd88cf`;
+    // FARWORLD CONTRACT (ERC1155)
+    const contract = "0xDE7C3435c34DDeE79234AdF612467727e980400d";
+
+    const url = `https://base-mainnet.g.alchemy.com/nft/v3/${apiKey}/getNFTsForContract?contractAddress=${contract}&withMetadata=true&limit=50`;
 
     const res = await fetch(url);
     const data = await res.json();

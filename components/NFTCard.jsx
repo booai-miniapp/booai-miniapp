@@ -1,22 +1,24 @@
-"use client";
-
 export default function NFTCard({ nft }) {
   const image =
-    nft?.media?.[0]?.thumbnail ||
-    nft?.media?.[0]?.gateway ||
-    nft?.raw?.metadata?.image ||
-    "";
+    nft?.image?.cachedUrl ||
+    nft?.image?.originalUrl ||
+    nft?.image?.pngUrl ||
+    "/placeholder.png";
 
   return (
-    <div className="border border-gray-600 p-3 rounded-lg">
-      {image ? (
-        <img src={image} className="rounded mb-2" alt="NFT" />
-      ) : (
-        <div className="h-40 bg-gray-700 rounded mb-2"></div>
-      )}
+    <div className="bg-gray-900 p-3 rounded-lg">
+      <img
+        src={image}
+        alt={nft.name || "NFT"}
+        className="w-full h-40 object-cover rounded"
+      />
 
-      <p className="font-semibold text-sm">
-        {nft?.title || nft?.raw?.metadata?.name || "Unnamed NFT"}
+      <h3 className="text-white mt-2 font-semibold">
+        {nft.name || `Token #${nft.tokenId}`}
+      </h3>
+
+      <p className="text-gray-400 text-sm">
+        {nft.description || "No description"}
       </p>
     </div>
   );

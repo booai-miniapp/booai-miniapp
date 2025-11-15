@@ -10,12 +10,14 @@ export default function Marketplace() {
   async function loadNFTs() {
     try {
       setLoading(true);
+
       const res = await fetch("/api/alchemy");
       const data = await res.json();
-      
-      setNfts(data?.nfts || data?.nftTokenInfos || []);
+
+      // For Alchemy v3 responses
+      setNfts(data?.nfts || data?.nftTokenInfos || data?.tokens || []);
     } catch (e) {
-      console.error("Failed:", e);
+      console.error("Failed to load NFTs:", e);
     } finally {
       setLoading(false);
     }
@@ -42,7 +44,7 @@ export default function Marketplace() {
         <p className="mt-4 text-gray-400">No NFTs found.</p>
       ) : (
         <div className="grid grid-cols-2 gap-4 mt-4">
-          {nfts.map((nft: any, i: number) => (
+          {nfts.map((nft, i) => (
             <NFTCard key={i} nft={nft} />
           ))}
         </div>

@@ -1,29 +1,23 @@
 import { NextResponse } from "next/server";
 
-const OPENSEA_API = "https://api.opensea.io/api/v1/assets";
-
-export async function GET(request) {
+export async function GET() {
   try {
-    const url = new URL(request.url);
-    const limit = url.searchParams.get("limit") || "24";
-    const cursor = url.searchParams.get("cursor") || "";
-    const apiKey = process.env.OPEN_SEA_API_KEY || "";
+    const url =
+      "https://api.opensea.io/api/v2/chain/base/nfts?limit=50";
 
-    const params = new URLSearchParams({ limit });
-    if (cursor) params.set("cursor", cursor);
-
-    const finalUrl = `${OPENSEA_API}?${params.toString()}`;
-
-    const res = await fetch(finalUrl, {
+    const res = await fetch(url, {
       headers: {
-        Accept: "application/json",
-        ...(apiKey ? { "X-API-KEY": apiKey } : {})
+        "Accept": "application/json",
+        "X-API-KEY": process.env.OPEN_SEA_API_KEY || ""
       }
     });
 
     const data = await res.json();
     return NextResponse.json(data);
-  } catch (err) {
-    return NextResponse.json({ error: err.message || "error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: error.message || "Failed to load NFTs" },
+      { status: 500 }
+    );
   }
 }
